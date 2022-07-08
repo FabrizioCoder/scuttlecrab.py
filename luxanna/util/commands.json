@@ -1,0 +1,59 @@
+{
+    "lol": {
+        "profile": {
+            "name": "Profile",
+            "usage": "/lol profile [region] [summoner_name]",
+            "description": "Displays information about a summoner: best champions, recent game, master points, etc"
+        },
+        "champion": {
+            "name": "Champion",
+            "usage": "/lol champion <champion_name>",
+            "description": "Get information about a champion"
+        },
+        "mastery": {
+            "name": "Mastery",
+            "usage": "/lol mastery [region] [summoner_name]",
+            "description": "Get a best champions for a summoner"
+        },
+        "live": {
+            "name": "Live",
+            "usage": "/lol live [region] [summoner_name]",
+            "description": "Obtaining live game information from a summoner"
+        },
+        "icon": {
+            "name": "Icon",
+            "usage": "/lol icon [region] [summoner_name]",
+            "description": "Get the icon for a champion"
+        },
+        "build": {
+            "name": "Build",
+            "usage": "/lol build <champion_name>",
+            "description": "Shows the build of a champion"
+        },
+        "skill": {
+            "name": "Skill",
+            "usage": "/lol skill <champion_name>",
+            "description": "Shows the skill order of a champion"
+        },
+        "runes": {
+            "name": "Runes",
+            "usage": "/lol runes <champion_name>",
+            "description": "Shows the runes of a champion"
+        },
+        "server": {
+            "name": "Server",
+            "usage": "/lol server status [region_name]",
+            "description": "Get the status of a LoL server (example: LAN, LAS, KR)"
+        },
+        "matches": {
+            "name": "Matches",
+            "usage": "/lol matches [region] [summoner_name]",
+            "description": "Get the matches of a LoL summoner"
+        },
+        "account": {
+            "name": "Account",
+            "usage": "/lol account [add | remove] [region] [summoner_name]",
+            "description": "Add or remove a summoner to your discord account"
+        }
+    }
+}
