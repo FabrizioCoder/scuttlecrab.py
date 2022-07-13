@@ -77,7 +77,7 @@ def parse_duration(duration: int):
 
 
 def profile_icon(profileIconId: str) -> str:
-    return f"https://ddragon.leagueoflegends.com/cdn/12.12.1/img/profileicon/{profileIconId}.png"
+    return f"https://ddragon.leagueoflegends.com/cdn/12.13.1/img/profileicon/{profileIconId}.png"
 
 
 def get_champion_name_by_id(championId: str) -> str:
