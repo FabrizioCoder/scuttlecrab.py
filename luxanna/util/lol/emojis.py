@@ -357,6 +357,7 @@ CHAMPION_EMOJIS = {
     "Nautilus": "<:Nautilus:888552280280932392>",
     "Neeko": "<:Neeko:888552323113181244>",
     "Nidalee": "<:Nidalee:888552365924438016>",
+    "Nilah": "<:Nilah:996917711068209265>",
     "Nocturne": "<:Nocturne:888552408580489267>",
     "Nunu & Willump": "<:Nunu:888552451626659922>",
     "Nunu": "<:Nunu:888552451626659922>",
