@@ -16,7 +16,7 @@ async def on_message(message: disnake.Message) -> None:
 
     if message.guild.me.guild_permissions.manage_messages == False:
         try:
-            message.author.send(
+            await message.author.send(
                 content=f"❌ Missing `Send Messages` permission in `{message.channel.name}`"
             )
         except:
