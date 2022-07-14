@@ -52,16 +52,6 @@ class Misc(commands.Cog):
                 name=bold("League of Legends [8]"), value=", ".join(list_str)
             )
 
-            embed_cmds.add_field(
-                name="> Links",
-                value=" | ".join(
-                    [
-                        f"[Invite](https://discord.com/oauth2/authorize?client_id={self.bot.user.id}&permissions=277330906608&scope=bot%20applications.commands)",
-                        f"[Support Server](https://discord.gg/pE6efwjXYJ)",
-                    ]
-                ),
-                inline=False,
-            )
             return await interaction.edit_original_message(embeds=[embed_cmds])
 
         if command is None:
