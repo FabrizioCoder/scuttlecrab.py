@@ -22,5 +22,3 @@ async def on_message(message: disnake.Message) -> None:
         except:
             return
         return
-
-    await bot.process_commands(message)
