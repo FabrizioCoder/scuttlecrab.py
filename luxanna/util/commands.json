@@ -25,21 +25,6 @@
             "usage": "/lol icon [region] [summoner_name]",
             "description": "Get the icon for a champion"
         },
-        "build": {
-            "name": "Build",
-            "usage": "/lol build <champion_name>",
-            "description": "Shows the build of a champion"
-        },
-        "skill": {
-            "name": "Skill",
-            "usage": "/lol skill <champion_name>",
-            "description": "Shows the skill order of a champion"
-        },
-        "runes": {
-            "name": "Runes",
-            "usage": "/lol runes <champion_name>",
-            "description": "Shows the runes of a champion"
-        },
         "server": {
             "name": "Server",
             "usage": "/lol server status [region_name]",

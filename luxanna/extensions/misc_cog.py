@@ -1,3 +1,4 @@
+from os import ctermid
 import disnake
 import platform
 import functools
@@ -35,18 +36,21 @@ class Misc(commands.Cog):
 
         async def send_help():
             embed_cmds = disnake.Embed(
-                title="Luxanna Commands", color=disnake.Color.blurple()
+                color=disnake.Color.blurple(),
+                description="My current prefix in this server is / Type /help <command name> to get information about a specific command.",
             )
-            embed_cmds.set_thumbnail(url=self.bot.user.display_avatar.url)
+            embed_cmds.set_author(
+                name="Luxanna Commands", icon_url=self.bot.user.display_avatar.url
+            )
+            embed_cmds.set_footer(text="Total Commands: 8")
 
+            list_str = []
             for command in COMMANDS["lol"].values():
-                embed_cmds.add_field(
-                    name=command["name"],
-                    value="\n".join(
-                        [code_string(command["usage"]), command["description"]]
-                    ),
-                    inline=True,
-                )
+                list_str.append(f'{code_string(str(command["name"]).lower())}')
+
+            embed_cmds.add_field(
+                name=bold("League of Legends [8]"), value=", ".join(list_str)
+            )
 
             embed_cmds.add_field(
                 name="> Links",
