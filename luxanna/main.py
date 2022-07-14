@@ -4,7 +4,7 @@ from luxanna.classes.bot import CustomBot
 bot = CustomBot()
 
 
-@bot.event
+@bot.event()
 async def on_message(message: disnake.Message) -> None:
     """
     The code in this event is executed every time someone sends a message, with or without the prefix
