@@ -37,7 +37,7 @@ class Misc(commands.Cog):
         async def send_help():
             embed_cmds = disnake.Embed(
                 color=disnake.Color.blurple(),
-                description="My current prefix in this server is / Type /help <command name> to get information about a specific command.",
+                description="My current prefix in this server is `/` Type `/help <command name>` to get information about a specific command.",
             )
             embed_cmds.set_author(
                 name="Luxanna Commands", icon_url=self.bot.user.display_avatar.url
