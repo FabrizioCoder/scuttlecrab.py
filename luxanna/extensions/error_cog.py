@@ -28,10 +28,30 @@ class Errors(commands.Cog):
     def __init__(self, bot: CustomBot):
         self.bot = bot
 
+    # @commands.Bot.event
+    # async def on_message(message: disnake.Message) -> None:
+    #     """
+    #     The code in this event is executed every time someone sends a message, with or without the prefix
+    #     :param message: The message that was sent.
+    #     """
+
+    #     if message.author == message.guild.me._user or message.author.bot:
+    #         return
+
+    #     if message.guild.me.guild_permissions.manage_messages == False:
+    #         try:
+    #             await message.author.send(
+    #                 content=f"❌ Missing `Send Messages` permission in `{message.channel.name}`"
+    #             )
+    #         except:
+    #             return
+    #         return
+
     @commands.Cog.listener()
     async def on_command_error(
         self, ctx: commands.Context, error: commands.CommandError
     ):
+        print(error)
         # Ignore local handlers
         if hasattr(ctx.command, "on_error"):
             return
@@ -45,42 +65,50 @@ class Errors(commands.Cog):
 
         # User interaction
         elif isinstance(error, commands.NotOwner):
-            return await self.send(ctx, error, "You are not an owner")
+            if not ctx.guild.me.guild_permissions.send_messages:
+                return await self.send(ctx, error, "You are not an owner")
 
         elif isinstance(error, commands.MissingRequiredArgument):
-            return await self.send(
-                ctx,
-                error,
-                f"Missing required argument: {code_string(error.param.name)}",
-            )
+            if not ctx.guild.me.guild_permissions.send_messages:
+                return await self.send(
+                    ctx,
+                    error,
+                    f"Missing required argument: {code_string(error.param.name)}",
+                )
 
         elif isinstance(error, commands.BadArgument):
-            return await self.send(
-                ctx,
-                error,
-                f"{code_string(str(error.argument))} is not a valid argument",
-            )
+            if not ctx.guild.me.guild_permissions.send_messages:
+                return await self.send(
+                    ctx,
+                    error,
+                    f"{code_string(str(error.argument))} is not a valid argument",
+                )
 
         elif isinstance(error, commands.ArgumentParsingError):
-            return await self.send(ctx, error, "Bad argument quotes")
+            if not ctx.guild.me.guild_permissions.send_messages:
+                return await self.send(ctx, error, "Bad argument quotes")
 
         elif isinstance(error, commands.BotMissingPermissions):
-            return await self.send(
-                ctx, error, "Wormhole does not have permission to do this"
-            )
+            if not ctx.guild.me.guild_permissions.send_messages:
+                return await self.send(
+                    ctx, error, "Wormhole does not have permission to do this"
+                )
 
         elif isinstance(error, commands.CheckFailure):
-            return await self.send(ctx, error, "You are not allowed to do this")
+            if not ctx.guild.me.guild_permissions.send_messages:
+                return await self.send(ctx, error, "You are not allowed to do this")
 
         elif isinstance(error, commands.CommandOnCooldown):
-            return await self.send(
-                ctx,
-                error,
-                f"This command is on cooldown, try in {code_string(seconds2str(error.retry_after))}",
-            )
+            if not ctx.guild.me.guild_permissions.send_messages:
+                return await self.send(
+                    ctx,
+                    error,
+                    f"This command is on cooldown, try in {code_string(seconds2str(error.retry_after))}",
+                )
 
         elif isinstance(error, commands.UserInputError):
-            return await self.send(ctx, error, "Wrong input")
+            if not ctx.guild.me.guild_permissions.send_messages:
+                return await self.send(ctx, error, "Wrong input")
 
         # Cog loading
         elif isinstance(error, commands.ExtensionAlreadyLoaded):
@@ -105,7 +133,8 @@ class Errors(commands.Cog):
         traceback.print_exception(
             type(error), error, error.__traceback__, file=sys.stderr
         )
-        await self.send(ctx, error, str(error))
+        if not ctx.guild.me.guild_permissions.send_messages:
+            await self.send(ctx, error, str(error))
 
     @commands.Cog.listener()
     async def on_slash_command_error(
@@ -133,7 +162,8 @@ class Errors(commands.Cog):
             color=disnake.Colour.brand_red(),
             author=ctx.author,
         )
-        await ctx.send(embeds=[embed])
+        if not ctx.guild.me.guild_permissions.send_messages:
+            await ctx.send(embeds=[embed])
 
 
 def setup(bot: CustomBot):

@@ -128,10 +128,11 @@ class Dev(commands.Cog):
 
         pages = paginate(result)
 
-        return await ctx.send(
-            content=code_block(pages[0]),
-            view=PaginatorButton(pages),
-        )
+        if not ctx.guild.me.guild_permissions.send_messages:
+            return await ctx.send(
+                content=code_block(pages[0]),
+                view=PaginatorButton(pages),
+            )
 
 
 def setup(bot: CustomBot) -> None:
